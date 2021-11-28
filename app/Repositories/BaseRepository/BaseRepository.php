@@ -6,7 +6,7 @@ use App\Repositories\RepositoryInterfaces\BaseInterface;
 
 use function GuzzleHttp\Promise\all;
 
-class BaseRepository implements BaseInterface {
+abstract class BaseRepository implements BaseInterface {
 
     protected $model;
      /*   BaseRepository contructor */
@@ -58,7 +58,7 @@ class BaseRepository implements BaseInterface {
      */
     public function create(array $attributes)
     {
-        return $this->model->create($attributes);
+        return $this->model->create($attributes)->id;
     }
     /**
      * Update a entity in repository by id
@@ -68,7 +68,7 @@ class BaseRepository implements BaseInterface {
      *
      * @return mixed
      */
-    public function update($id, array  $attributes )
+    public function update(array  $attributes ,$id)
     {
         $result = $this->model->find($id);
         if($result){
@@ -92,6 +92,12 @@ class BaseRepository implements BaseInterface {
             return true;
         }
         return false;
+    }
+
+    public function findByField($field, $value)
+    {
+        $result = $this->model->where($field , $value)->get();
+        return $result;
     }
 
 }

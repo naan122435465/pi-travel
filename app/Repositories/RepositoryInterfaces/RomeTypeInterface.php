@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Repositories\RepositoryInterfaces;
- 
-interface LocationInterface extends BaseInterface
+
+interface RoomTypeInterface extends BaseInterface
 {
-   
+    
 }

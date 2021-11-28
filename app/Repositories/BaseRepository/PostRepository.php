@@ -12,9 +12,13 @@ class PostRepository extends BaseRepository implements PostInterface
     {
         return \App\Models\Post::class;
     }
-
-    public function homePost(){
-        $post = $this->model->where('type','Home')->get();
-        return $post;
-    }
+    // public function homePost(){
+    //     $result = $this->model->where('type','Home')->get();
+    //     return $result;
+    // }
+    // public function getByIdHotel($id)
+    // {
+    //     $result = $this->model->where('hotel_id',$id)->get();
+    //     return $result;
+    // }
 }

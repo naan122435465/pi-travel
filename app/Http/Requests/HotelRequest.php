@@ -24,10 +24,10 @@ class HotelRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'bail|max:50|regex:/^[a-zA-Z/s]/',
-            'email'=>'bail|email',
-            'phone'=>'bail|integer|digits:10',
-            'price'=>'integer',
+            'name'=>'bail|required|max:50|regex:/^[a-zA-Z/s]/',
+            'email'=>'bail|required|email',
+            'phone'=>'bail|required|integer|digits:10',
+            'price'=>'required|integer',
         ];
     }
 }

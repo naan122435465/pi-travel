@@ -11,4 +11,10 @@ class LocationRepository extends BaseRepository implements LocationInterface
     {
         return \App\Models\Location::class;
     }
+
+    // public function getById($id)
+    // {
+    //     $result = $this->model->where("id",$id)->get();
+    //     return $result;
+    // }
 }

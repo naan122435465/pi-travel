@@ -33,7 +33,7 @@ interface BaseInterface {
      *
      * @return mixed
      */
-    public function update($id, array  $attributes );
+    public function update( array  $attributes, $id );
      /**
      * Delete a entity in repository by id
      *
@@ -42,5 +42,15 @@ interface BaseInterface {
      * @return int
      */
     public function delete($id);
+
+     /**
+     * Find data by field and value
+     *
+     * @param       $field
+     * @param       $value
+     *
+     * @return mixed
+     */
+    public function findByField($field, $value);
 
 }
