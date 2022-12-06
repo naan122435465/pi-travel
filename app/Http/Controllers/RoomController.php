@@ -17,18 +17,7 @@ class RoomController extends Controller
          $this->roomRe = $roomRe;
      }
 
-     public function hotelRoom($id)
-     {
-        $result = $this->roomRe->findByField('hotel_id',$id);
-        return $result;
-     }
-
-     public function searchRoom($search)
-     {
-         $result = $this->roomRe->search($search);
-         return $result;
-     }
-
+   
      public function addRoom(RoomRequest $request, $id)
      {
         $input = $request->all();
@@ -55,6 +44,17 @@ class RoomController extends Controller
         $result = $this->roomRe->delete($id);
         return $result;
     }
+  public function hotelRoom($id)
+     {
+        $result = $this->roomRe->findByField('hotel_id',$id);
+        return $result;
+     }
+
+     public function searchRoom($search)
+     {
+         $result = $this->roomRe->search($search);
+         return $result;
+     }
 
 
 //     public function hotelRoom($id){
