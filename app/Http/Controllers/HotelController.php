@@ -40,7 +40,23 @@ class HotelController extends Controller
         return $this->hotelRe->hotelList(); 
     }
 
-   
+    public function hotelDetail($id){
+        $hotel = $this->hotelRe->getById($id);
+        $image = $this->imageRe->getByIdHotel($id);
+        $post  = $this->postRe->findByField('hotel_id',$id);
+        $room = $this->roomRe->findByField('hotel_id',$id);
+        $hotelService = $this->hotelServiceRe->findByField('hotel_id',$id);
+        $idLocal = $this->hotelRe->getLocalId($id);
+        $hotelLocation = $this->locationRe->getById($idLocal);
+        return[
+            $hotel,
+            $image,
+            $post,
+            $room,
+            $hotelService,
+            $hotelLocation
+        ];
+    }
 
     public function searchHotel($search)
     {
@@ -52,24 +68,6 @@ class HotelController extends Controller
         $input = $request->all();
         return $this->hotelRe->create($input);
 
-    }
-     public function hotelDetail($id){
-       
-        $room = $this->roomRe->findByField('hotel_id',$id);
-        $hotelService = $this->hotelServiceRe->findByField('hotel_id',$id);
-        $idLocal = $this->hotelRe->getLocalId($id);
-        $hotelLocation = $this->locationRe->getById($idLocal);
-         $hotel = $this->hotelRe->getById($id);
-        $image = $this->imageRe->getByIdHotel($id);
-        $post  = $this->postRe->findByField('hotel_id',$id);
-        return[
-            $hotel,
-            $image,
-            $post,
-            $room,
-            $hotelService,
-            $hotelLocation
-        ];
     }
     
     public function updateHotel(HotelRequest $request, $id)
