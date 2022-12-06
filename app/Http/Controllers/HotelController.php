@@ -40,7 +40,20 @@ class HotelController extends Controller
         return $this->hotelRe->hotelList(); 
     }
 
-    public function hotelDetail($id){
+   
+
+    public function searchHotel($search)
+    {
+        return $this->hotelRe->search($search);
+    }
+
+    public function addHotel(HotelRequest $request)
+    {   
+        $input = $request->all();
+        return $this->hotelRe->create($input);
+
+    }
+     public function hotelDetail($id){
        
         $room = $this->roomRe->findByField('hotel_id',$id);
         $hotelService = $this->hotelServiceRe->findByField('hotel_id',$id);
@@ -57,18 +70,6 @@ class HotelController extends Controller
             $hotelService,
             $hotelLocation
         ];
-    }
-
-    public function searchHotel($search)
-    {
-        return $this->hotelRe->search($search);
-    }
-
-    public function addHotel(HotelRequest $request)
-    {   
-        $input = $request->all();
-        return $this->hotelRe->create($input);
-
     }
     
     public function updateHotel(HotelRequest $request, $id)

@@ -22,11 +22,7 @@ class RoomTypeController extends Controller
         return $result;
     }
 
-    public function showRoomType()
-    {
-        $result = $this->roomTypeRe->getAll();
-        return $result;
-    }
+   
 
     public function updateRoomType(RoomTypeRequest $request, $id)
     {
@@ -34,7 +30,11 @@ class RoomTypeController extends Controller
         $result = $this->roomTypeRe->update($input, $id);
         return $result;
     }
-
+ public function showRoomType()
+    {
+        $result = $this->roomTypeRe->getAll();
+        return $result;
+    }
     public function deleteRoomType($id)
     {
         $result = $this->roomTypeRe->delete($id);
