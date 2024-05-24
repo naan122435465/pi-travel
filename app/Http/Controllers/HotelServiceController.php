@@ -11,24 +11,13 @@ class HotelServiceController extends Controller
 {
     private $hotelServiceRe;
 
+    
     public function __construct(HotelServiceInterface $hotelServiceRe)
     {
         $this->hotelServiceRe = $hotelServiceRe;
     }
 
-    /**
-     * get hotel service
-     *
-     * @param $id is hotel_id
-     * return array service id
-     */ 
-
-    public function hotelService($id)
-    {
-        $data = $this->hotelServiceRe->findByField('hotel_id', $id);
-        $result = array_column($data, 'service_id');
-        return $result;
-    }
+    
     /**
      * update service Hotel
      *
@@ -55,6 +44,19 @@ class HotelServiceController extends Controller
             ];
             $this->hotelServiceRe->create($input);
         }
+    }
+    /**
+     * get hotel service
+     *
+     * @param $id is hotel_id
+     * return array service id
+     */ 
+
+    public function hotelService($id)
+    {
+        $data = $this->hotelServiceRe->findByField('hotel_id', $id);
+        $result = array_column($data, 'service_id');
+        return $result;
     }
     // public function hotelService($id){
     //     $data =  HotelService::where('hotel_id', $id)->get()->toArray();
